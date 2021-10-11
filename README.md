@@ -11,21 +11,23 @@ incoming webhook等のカスタムインテグレーションは非推奨のた�
 1. [開発環境](#開発環境)
    1. [初期環境](#初期環境)
    2. [必要な環境](#必要な環境)
-   3. [開発をする際にインストールするツール](#開発をする際にインストールするツール)
-2. GASをローカルで管理するための準備
+   3. [開発をする際にインストールするツール一覧](#開発をする際にインストールするツール)
+2. [GASをローカルで管理するための準備](#gasをローカルで管理するための準備)
    1. nodebrewのインストール
    2. Node.jsのインストール
    3. nodeが使えるように環境PATHを設定する
    4. claspのインストール
-   5. GASプロジェクトの作成
-   6. doPost関数の作成
-3. GCPプロジェクトとGASを紐付ける
+3. GASプロジェクトの作成(ローカル)
+   1. Google アカウントにログイン
+   2. GASプロジェクトの作成
+   3. doPost関数の作成
+4. GCPプロジェクトとGASを紐付ける
    1. 同意画面を作成
    2. OAuth クライアント ID の作成
       1. デスクトップアプリを作成
       2. 認証情報の入ったjsonファイルをダウンロード
    3. ライブラリの有効化
-4. Slack Appの作成
+5. Slack Appの作成
    1. Event Subscriptionsを設定
    2. OAuth & Permissionsを設定
    3. BotのDisplay Nameを設定
@@ -122,7 +124,7 @@ io@v3.0.0 io@v3.1.0 io@v3.2.0 io@v3.3.0 io@v3.3.1
     nodebrew install-binary stable
     ```
 
-上記の際に `<homedir>/.nodebrew/src` が無いよとエラーが出力された場合はそれぞれのディレクトリを作成して、もう一度[Node.jsのインストール](#nodejsをインストール)を行う
+上記の際に `$HOME/.nodebrew/src` が無いよとエラーが出力された場合はそれぞれのディレクトリを作成して、もう一度[Node.jsのインストール](#nodejsをインストール)を行う
 
 ```zsh
 mkdir ~/.nodebrew
@@ -164,3 +166,16 @@ source ~/.zprofile
 ```zsh
 npm i @google/clasp -g
 ```
+
+## GASプロジェクトの作成(ローカル)
+
+### Google アカウントへのアクセスリクエストの許可
+
+```zsh
+clasp login
+```
+
+[(GASを作成する)アカウントを選択](https://user-images.githubusercontent.com/40563830/136808216-001f2041-7ad5-4736-91b0-5b5064af11b8.png) > [clasp - The Apps Script CLIのアクセスリクエストを許可する](https://user-images.githubusercontent.com/40563830/136808226-7651d9c3-acff-4690-97ca-fbce210a80b2.png) > [Logged in! You may close this page.](https://user-images.githubusercontent.com/40563830/136808234-2dfdddbd-b93f-4f18-9b03-2160f41db40a.png)が出力されたら、ページを閉じる
+
+
+成功していれば、ターミナルに`Authorization successful.`が出力される
