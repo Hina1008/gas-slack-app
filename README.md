@@ -14,10 +14,11 @@ incoming webhook等のカスタムインテグレーションは非推奨のた�
    3. [開発をする際にインストールするツール](#開発をする際にインストールするツール)
 2. GASをローカルで管理するための準備
    1. nodebrewのインストール
-   2. npmのインストール
-   3. claspのインストール
-   4. GASプロジェクトの作成
-   5. doPost関数の作成
+   2. Node.jsのインストール
+   3. nodeが使えるように環境PATHを設定する
+   4. claspのインストール
+   5. GASプロジェクトの作成
+   6. doPost関数の作成
 3. GCPプロジェクトとGASを紐付ける
    1. 同意画面を作成
    2. OAuth クライアント ID の作成
@@ -58,3 +59,106 @@ incoming webhook等のカスタムインテグレーションは非推奨のた�
 - npm@8.0.0
 - clasp: 2.4.1
 
+## GASをローカルで管理するための準備
+
+### nodebrewをインストール
+
+```zsh
+brew install nodebrew
+```
+
+### Node.jsをインストール
+
+インストールできるバージョンを確認
+
+```zsh:
+nodebrew ls-remote
+```
+
+出力結果
+
+```zsh
+v0.0.1    v0.0.2    v0.0.3    v0.0.4    v0.0.5    v0.0.6  
+
+...
+
+v16.0.0   v16.1.0   v16.2.0   v16.3.0   v16.4.0   v16.4.1   v16.4.2   v16.5.0
+v16.6.0   v16.6.1   v16.6.2   v16.7.0   v16.8.0   v16.9.0   v16.9.1   v16.10.0
+v16.11.0  
+
+io@v1.0.0 io@v1.0.1 io@v1.0.2 io@v1.0.3 io@v1.0.4 io@v1.1.0 io@v1.2.0 io@v1.3.0
+io@v1.4.1 io@v1.4.2 io@v1.4.3 io@v1.5.0 io@v1.5.1 io@v1.6.0 io@v1.6.1 io@v1.6.2
+io@v1.6.3 io@v1.6.4 io@v1.7.1 io@v1.8.1 io@v1.8.2 io@v1.8.3 io@v1.8.4 
+
+io@v2.0.0 io@v2.0.1 io@v2.0.2 io@v2.1.0 io@v2.2.0 io@v2.2.1 io@v2.3.0 io@v2.3.1
+io@v2.3.2 io@v2.3.3 io@v2.3.4 io@v2.4.0 io@v2.5.0 
+
+io@v3.0.0 io@v3.1.0 io@v3.2.0 io@v3.3.0 io@v3.3.1 
+```
+
+上記バージョンから指定してインストール
+
+```zsh
+nodebrew install-binary {version}
+```
+
+最新バージョンをインストールする場合
+
+```zsh
+nodebrew install-binary latest
+```
+
+安定バージョンをインストールする場合
+
+```zsh
+nodebrew install-binary stable
+```
+
+例
+
+```zsh
+nodebrew install-binary v16.11.0
+```
+
+上記の際に `<homedir>/.nodebrew/src` が無いよとエラーが出力された場合はそれぞれのディレクトリを作成して、もう一度[Node.jsのインストール](#nodejsをインストール)を行う
+
+```zsh
+mkdir ~/.nodebrew
+mkdir ~/.nodebrew/src
+```
+
+インストール完了後、インストールしたバージョンを有効にする
+
+```zsh
+nodebrew use {version}
+```
+
+例
+
+```zsh
+nodebrew use v16.11.0
+```
+
+バージョンの確認は、以下のコマンドを入力する
+
+```zsh
+nodebrew list
+```
+
+### nodeが使えるように環境PATHを設定する
+
+```zsh
+echo 'export PATH=$HOME/.nodebrew/current/bin:$PATH' >> ~/.zprofile
+```
+
+設定後、ターミナルを再起動、もしくは以下のコマンドを実行
+
+```zsh
+source ~/.zprofile
+```
+
+### claspのインストール
+
+```zsh
+npm i @google/clasp -g
+```
