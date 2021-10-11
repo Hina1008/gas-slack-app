@@ -104,6 +104,12 @@ io@v3.0.0 io@v3.1.0 io@v3.2.0 io@v3.3.0 io@v3.3.1
     nodebrew install-binary {version}
     ```
 
+   - 例
+
+       ```zsh
+       nodebrew install-binary v16.11.0
+       ```
+
 2. 最新バージョンをインストールする場合
 
     ```zsh
@@ -114,12 +120,6 @@ io@v3.0.0 io@v3.1.0 io@v3.2.0 io@v3.3.0 io@v3.3.1
 
     ```zsh
     nodebrew install-binary stable
-    ```
-
-- 例
-
-    ```zsh
-    nodebrew install-binary v16.11.0
     ```
 
 上記の際に `<homedir>/.nodebrew/src` が無いよとエラーが出力された場合はそれぞれのディレクトリを作成して、もう一度[Node.jsのインストール](#nodejsをインストール)を行う
