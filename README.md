@@ -96,29 +96,31 @@ io@v2.3.2 io@v2.3.3 io@v2.3.4 io@v2.4.0 io@v2.5.0
 io@v3.0.0 io@v3.1.0 io@v3.2.0 io@v3.3.0 io@v3.3.1 
 ```
 
-上記バージョンから指定してインストール
+#### バージョンを指定してインストールする方法
 
-```zsh
-nodebrew install-binary {version}
-```
+1. 上記バージョンから指定してインストール
 
-最新バージョンをインストールする場合
+    ```zsh
+    nodebrew install-binary {version}
+    ```
 
-```zsh
-nodebrew install-binary latest
-```
+2. 最新バージョンをインストールする場合
 
-安定バージョンをインストールする場合
+    ```zsh
+    nodebrew install-binary latest
+    ```
 
-```zsh
-nodebrew install-binary stable
-```
+3. 安定バージョンをインストールする場合
 
-例
+    ```zsh
+    nodebrew install-binary stable
+    ```
 
-```zsh
-nodebrew install-binary v16.11.0
-```
+- 例
+
+    ```zsh
+    nodebrew install-binary v16.11.0
+    ```
 
 上記の際に `<homedir>/.nodebrew/src` が無いよとエラーが出力された場合はそれぞれのディレクトリを作成して、もう一度[Node.jsのインストール](#nodejsをインストール)を行う
 
@@ -133,17 +135,17 @@ mkdir ~/.nodebrew/src
 nodebrew use {version}
 ```
 
-例
+- 例
 
-```zsh
-nodebrew use v16.11.0
-```
+    ```zsh
+    nodebrew use v16.11.0
+    ```
 
-バージョンの確認は、以下のコマンドを入力する
+- バージョンの確認は、以下のコマンドを入力する
 
-```zsh
-nodebrew list
-```
+    ```zsh
+    nodebrew list
+    ```
 
 ### nodeが使えるように環境PATHを設定する
 
