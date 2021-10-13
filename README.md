@@ -174,8 +174,39 @@ npm i @google/clasp -g
 ```zsh
 clasp login
 ```
+上記のコマンドを実行すると、ウィンドウが開かれるので、以下の手順に沿ってアクセスリクエストを許可する。
+
 
 [(GASを作成する)アカウントを選択](https://user-images.githubusercontent.com/40563830/136808216-001f2041-7ad5-4736-91b0-5b5064af11b8.png) > [clasp - The Apps Script CLIのアクセスリクエストを許可する](https://user-images.githubusercontent.com/40563830/136808226-7651d9c3-acff-4690-97ca-fbce210a80b2.png) > [Logged in! You may close this page.](https://user-images.githubusercontent.com/40563830/136808234-2dfdddbd-b93f-4f18-9b03-2160f41db40a.png)が出力されたら、ページを閉じる
 
 
 成功していれば、ターミナルに`Authorization successful.`が出力される
+
+### GASを作成する
+
+GASを作成する前に、`https://script.google.com/home/usersettings`にアクセスして、Google Apps Script APIをオンにする
+
+その後、以下のコマンドを打って、GASを作成する
+
+```zsh
+clasp create {GAS Project Name}
+```
+
+- 例
+
+  ```zsh
+  clasp create sample
+  ```
+
+`? Create which script?`では、`>standalone`を選択
+
+作成に成功したら、以下の例のように出力される
+
+- 例
+
+    ```zsh
+    Created new standalone script: https://script.google.com/d/1NcBUsxVFbW5EAxFx93t8zstk6551yoeoCq7lYo5U_JXuPxVgvNKJjQn0/edit
+    Warning: files in subfolder are not accounted for unless you set a '$HOME/gas-slack-app/.claspignore' file.
+    Cloned 1 file.
+    └─ $HOME/gas-slack-app/appsscript.json
+    ```
